@@ -1,0 +1,81 @@
+package uniandes.dpoo.aerolinea.modelo.cliente;
+
+import java.util.Collection;
+
+import org.json.JSONObject;
+
+import uniandes.dpoo.aerolinea.modelo.Tiquete;
+import uniandes.dpoo.aerolinea.modelo.Vuelo;
+
+/**
+ * Esta clase se usa para representar a los clientes de la aerolínea que son empresas
+ */
+public class ClienteCorporativo extends Cliente {
+    public static final String CORPORATIVO = "Corporativo";
+    public static final int GRANDE = 1;
+    public static final int MEDIANA = 2;
+    public static final int PEQUENA = 3;
+
+    private String nombreEmpresa1;
+    private int tamanoEmpresa1;
+
+    public ClienteCorporativo(String identificador, String nombreEmpresa, int tamanoEmpresa) {
+        super(identificador);
+        this.nombreEmpresa1 = nombreEmpresa;
+        this.tamanoEmpresa1 = tamanoEmpresa;
+    }
+
+	/**
+     * Crea un nuevo objeto de tipo a partir de un objeto JSON.
+     * 
+     * El objeto JSON debe tener dos atributos: nombreEmpresa (una cadena) y tamanoEmpresa (un número).
+     * @param cliente El objeto JSON que contiene la información
+     * @return El nuevo objeto inicializado con la información
+     */
+    public static ClienteCorporativo cargarDesdeJSON( JSONObject cliente )
+    {
+        String nombreEmpresa = cliente.getString( "nombreEmpresa" );
+        int tam = cliente.getInt( "tamanoEmpresa" );
+        return new ClienteCorporativo( nombreEmpresa, nombreEmpresa, tam );
+    }
+
+	private Collection<?> nombreEmpresa;
+	private Collection<?> tamanoEmpresa;
+
+    /**
+     * Salva este objeto de tipo ClienteCorporativo dentro de un objeto JSONObject para que ese objeto se almacene en un archivo
+     * @return El objeto JSON con toda la información del cliente corporativo
+     */
+    public JSONObject salvarEnJSON( )
+    {
+        JSONObject jobject = new JSONObject( );
+        jobject.put( "nombreEmpresa", this.nombreEmpresa1 );
+        jobject.put( "tamanoEmpresa", this.tamanoEmpresa1 );
+        jobject.put( "tipo", CORPORATIVO );
+        return jobject;
+    }
+
+	@Override
+	public void agregarTiquete(Tiquete tiquete) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void calcularValorTotalTiquetes() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void usarTiquetes(Vuelo vuelo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getTipoCliente() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}
