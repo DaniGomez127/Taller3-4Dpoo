@@ -11,6 +11,7 @@ public class Tiquete {
     private Vuelo vuelo;
     private Cliente clienteComprador;
     private int tarifaInt;
+    
     public Tiquete(String codigo, Vuelo vuelo, Cliente clienteComprador, int tarifaInt) {
         this.codigo = codigo;
         this.vuelo = vuelo;

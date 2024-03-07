@@ -13,25 +13,54 @@ public class CalculadoraTarifasTemporadaBaja extends CalculadoraTarifas {
 
     @Override
     protected int calcularCostoBase(Vuelo vuelo, Cliente cliente) {
-		return 0;
+    	int costoBase = 0;
+        if (cliente.getTipoCliente().equals("Natural")) {
+            costoBase = COSTO_POR_KM_NATURAL * calcularDistanciaVuelo(vuelo.getRuta());
+        } else if (cliente.getTipoCliente().equals("Corporativo")) {
+            costoBase = COSTO_POR_KM_CORPORATIVO * calcularDistanciaVuelo(vuelo.getRuta());
+        }
+        return costoBase;
        
     }
 
     @Override
     protected double calcularPorcentajeDescuento(Cliente cliente) {
-		return 0;
-        
+    	double porcentajeDescuento = 0;
+    	if (cliente.getTipoCliente().equals("Pequeña")) {
+            porcentajeDescuento = DESCUENTO_PEQ;
+        } else if (cliente.getTipoCliente().equals("Mediana")) {
+            porcentajeDescuento = DESCUENTO_MEDIANAS;
+        } else if (cliente.getTipoCliente().equals("Grande")) {
+            porcentajeDescuento = DESCUENTO_GRANDES;
+        }
+        return porcentajeDescuento;
     }
 
     @Override
-    protected int calcularDistanciaVuelo(Ruta ruta) {
+    protected int calcularDistanciaVuelo(Object object) {
 		return 0;
         
     }
 
     @Override
     public int calcularTarifa(Vuelo vuelo, Cliente cliente) {
-		return 0;
+    	int costoBase = calcularCostoBase(vuelo, cliente);
+        double porcentajeDescuento = calcularPorcentajeDescuento(cliente);
+        int distanciaVuelo = calcularDistanciaVuelo(vuelo.getRuta());
+        
+       
+        double costoConDescuento = costoBase * (1 - porcentajeDescuento / 100);
+        
+      
+        int costoTotal = (int) (distanciaVuelo * COSTO_POR_KM_NATURAL + costoConDescuento);
+        
+        return costoTotal;
         
     }
+
+	@Override
+	protected int calcularDistanciaVuelo(Ruta ruta) {
+	
+		return 0;
+	}
 }

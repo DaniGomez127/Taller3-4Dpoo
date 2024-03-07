@@ -19,4 +19,8 @@ public abstract class CalculadoraTarifas {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	protected int calcularDistanciaVuelo(Object object) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

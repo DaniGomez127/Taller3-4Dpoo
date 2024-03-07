@@ -11,8 +11,7 @@ import uniandes.dpoo.aerolinea.exceptions.AeropuertoDuplicadoException;
  */
 public class Aeropuerto
 {
-    // TODO completar
-    
+
 
     private static final double RADIO_TERRESTRE = 0;
 
@@ -48,12 +47,12 @@ public class Aeropuerto
     }
 
 	private double getLongitud() {
-		// TODO Auto-generated method stub
+		
 		return 0;
 	}
 
 	private double getLatitud() {
-		// TODO Auto-generated method stub
+		
 		return 0;
 	}
 

@@ -20,6 +20,7 @@ public class ClienteNatural extends Cliente {
     @Override
     public void agregarTiquete(Tiquete tiquete) {
         // Lógica para agregar un tiquete
+    	
     }
 
     @Override
@@ -35,7 +36,7 @@ public class ClienteNatural extends Cliente {
 	@Override
 	public String getTipoCliente() {
 		// TODO Auto-generated method stub
-		return null;
+		return "Natural";
 	}
 }
 
